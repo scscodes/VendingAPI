@@ -31,8 +31,29 @@ Base: API with actions using Entity Framework
 ## Models
 Denomenation - currency  
 Product - id : price : description   
+Purchase - associate transactions with products  
 Machine - associate location with machine inventory    
 MachineInventory - associate machine inventory with line items  
 MachineInventoryLineItem - associate inventory with line item details (product quantity)   
 Transaction - associate machine with transaction line items  
 TransactionLineItem -  associate transaction with line item details (product, quantity)
+
+## Sample Purchase/Dispense payload  
+```
+{
+  "id": 1,
+  "transaction": {
+    "id": 4,
+    "transactionLineItem": [
+      {
+        "id": 7,
+        "transactionId": 4,
+        "productId": 3,
+        "quantity": 1
+      }
+    ],
+    "machineId": 1
+  },
+  "amountTendered": 35
+}
+```
